@@ -2,7 +2,7 @@ import alt from '../alt'
 
 class Actions {
   constructor() {
-    this.generateActions('newMessage', 'personJoin', 'personLeave')
+    this.generateActions('newMessage', 'clientJoin', 'personJoin', 'personLeave')
   }
 }
 

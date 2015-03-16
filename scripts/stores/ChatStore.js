@@ -1,18 +1,31 @@
-import alt from '../alt'
-import Actions from '../actions/Actions'
+import alt from '../alt';
+import Actions from '../actions/Actions';
 
 class PersonStore {
   constructor() {
-    this.bindActions(Actions)
+    this.bindActions(Actions);
+    this.users = [];
+    this.messages = []
+    this.user = '';
   }
-  onNewMessage() {
-
+  onClientJoin(name) {
+    this.user = name;
   }
-  onPersonJoin() {
-
+  onNewMessage(message) {
+    this.messages.push(message);
   }
-  onPersonLeave() {
-
+  onPersonJoin(person) {
+    this.users.push(person);
+  }
+  onPersonLeave(perosn) {
+    var index = this.users.indexOf(person);
+    this.users.splice(index, 1)
+  }
+  static getMessages() {
+    return this.getState().messages;
+  }
+  static getPeople() {
+    return this.getState().users;
   }
 }
 
