@@ -12,7 +12,7 @@ class PersonStore {
 
   }
   onPersonLeave() {
-    
+
   }
 }
 
