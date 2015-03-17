@@ -7,7 +7,7 @@ class PersonStore {
     this.bindActions(Actions);
     this.users = [];
     this.messages = []
-    this.user = 'Clown';
+    this.user = 'nam';
   }
   onClientJoin(name) {
     this.user = name;
