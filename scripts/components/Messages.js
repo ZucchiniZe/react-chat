@@ -79,10 +79,10 @@ class MessageList extends React.Component {
     return (
       <div className='input-group messages'>
         <h3>
-          MessageList
+          Message List
           <small>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <input ref='name' placeholder='Please enter your name' type='text'/>
+              <input className='form-control' ref='name' placeholder='Please enter your name' type='text'/>
             </form>
           </small>
         </h3>
@@ -107,7 +107,9 @@ class MessageInput extends React.Component {
     return (
       <div className="input">
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input ref='input' type='text'/>
+          <div className="input-group">
+            <input className='form-control' ref='input' type='text'/>
+          </div>
         </form>
       </div>
     );
