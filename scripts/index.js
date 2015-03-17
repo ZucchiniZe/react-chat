@@ -2,7 +2,7 @@ import React from 'react';
 import App from './components/App';
 import Socket from './utils/socket';
 
-require('./styles/index.scss')
+require('./styles/index.less')
 
 Socket.initSockets();
 

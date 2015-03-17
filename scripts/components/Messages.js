@@ -30,7 +30,8 @@ class UserList extends React.Component {
       );
     });
     return (
-      <div className='users'>
+      <div className='right users col-md-4'>
+        <h3>Users:</h3>
         {userNodes}
       </div>
     )
@@ -77,7 +78,7 @@ class MessageList extends React.Component {
       );
     });
     return (
-      <div className='input-group messages'>
+      <div className='input-group messages col-md-8'>
         <h3>
           Message List
           <small>
@@ -105,7 +106,7 @@ class MessageInput extends React.Component {
   }
   render() {
     return (
-      <div className="input">
+      <div className="input col-md-8">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="input-group">
             <input className='form-control' ref='input' type='text'/>
@@ -122,10 +123,10 @@ class Messages extends React.Component {
   }
   render() {
     return (
-      <div className='main'>
+      <div className='main row'>
+        <UserList/>
         <MessageList/>
         <MessageInput/>
-        <UserList/>
       </div>
     );
   }
