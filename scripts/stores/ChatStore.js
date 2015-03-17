@@ -1,5 +1,6 @@
 import alt from '../alt';
 import Actions from '../actions/Actions';
+import Socket from '../utils/socket';
 
 class PersonStore {
   constructor() {
@@ -13,6 +14,12 @@ class PersonStore {
   }
   onNewMessage(message) {
     this.messages.push(message);
+    console.log(message)
+    Socket.sendMessage('alex', message.content)
+  }
+  onAddMessage(message) {
+    this.messages.push(message);
+    // Socket.sendMessage(this.user, message)
   }
   onPersonJoin(person) {
     this.users.push(person);
