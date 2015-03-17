@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A chat program made with react",
   "scripts": {
-    "start": "node server.js"
+    "start": "PORT=3000 ./node_modules/nodemon/bin/nodemon.js express.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "babel-core": "^4.7.4",
     "babel-loader": "^4.1.0",
     "ejs": "^2.3.1",
+    "nodemon": "^1.3.7",
     "react-hot-loader": "^1.2.2",
     "webpack": "^1.7.3",
     "webpack-dev-middleware": "^1.0.11",
