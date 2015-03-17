@@ -4,13 +4,13 @@ var socket = io(location.origin);
 
 export default {
   initSockets() {
-    socket.on('message', function(data) {
+    socket.on('send:message', (data) => {
       Actions.addMessage(data);
     });
-    socket.on('personJoin', function(data) {
+    socket.on('person:join', (data) => {
       Actions.personJoin(data);
     });
-    socket.on('personLeave', function(data) {
+    socket.on('person:leave', (data) => {
       Actions.personLeave(data);
     });
   },
@@ -20,7 +20,10 @@ export default {
       content: message,
       timestamp: Date.now()
     }
-    socket.emit('clientMessage', message);
+    socket.emit('client:message', message);
     return message;
+  },
+  sendName(name) {
+    socket.emit('set:name', name);
   }
 }

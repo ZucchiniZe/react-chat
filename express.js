@@ -22,12 +22,11 @@ app.get('*', function(req, res) {
 });
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-  socket.on('clientMessage', function(data) {
+  socket.on('client:message', function(data) {
     console.log(data)
-    socket.broadcast.emit('message', data)
+    socket.broadcast.emit('send:message', data)
+  });
+  socket.on('set:name', function(data) {
+    socket.broadcast.emit('client:join', data)
   });
 });

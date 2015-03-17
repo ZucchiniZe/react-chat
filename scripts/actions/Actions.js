@@ -2,7 +2,7 @@ import alt from '../alt'
 
 class Actions {
   constructor() {
-    this.generateActions('setName', 'clientJoin', 'personJoin', 'personLeave')
+    this.generateActions('clientJoin', 'personJoin', 'personLeave')
   }
   newMessage(user, message) {
     if(message === '') {
