@@ -7,10 +7,10 @@ export default {
     socket.on('send:message', (data) => {
       Actions.addMessage(data);
     });
-    socket.on('person:join', (data) => {
+    socket.on('client:join', (data) => {
       Actions.personJoin(data);
     });
-    socket.on('person:leave', (data) => {
+    socket.on('client:leave', (data) => {
       Actions.personLeave(data);
     });
   },

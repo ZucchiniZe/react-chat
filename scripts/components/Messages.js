@@ -3,6 +3,40 @@ import Actions from '../actions/Actions';
 import ChatStore from '../stores/ChatStore';
 import moment from 'moment'
 
+class UserList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onStoreChange = this.onStoreChange.bind(this);
+    this.state = this._getStateFromStore();
+  }
+  _getStateFromStore() {
+    return {
+      users: ChatStore.getPeople()
+    }
+  }
+  onStoreChange() {
+    this.setState(this._getStateFromStore);
+  }
+  componentDidMount() {
+    ChatStore.listen(this.onStoreChange);
+  }
+  componentWillUnmount() {
+    ChatStore.unlisten(this.onStoreChange);
+  }
+  render() {
+    var userNodes = this.state.users.map((user) => {
+      return (
+        <span className='user'>{user}</span>
+      );
+    });
+    return (
+      <div className='users'>
+        {userNodes}
+      </div>
+    )
+  }
+}
+
 class MessageList extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +121,7 @@ class Messages extends React.Component {
       <div className='main'>
         <MessageList/>
         <MessageInput/>
+        <UserList/>
       </div>
     );
   }
