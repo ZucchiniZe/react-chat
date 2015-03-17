@@ -7,19 +7,18 @@ class PersonStore {
     this.bindActions(Actions);
     this.users = [];
     this.messages = []
-    this.user = '';
+    this.user = 'Alex';
   }
   onClientJoin(name) {
     this.user = name;
+    Socket.sendJoin(this.user)
   }
   onNewMessage(message) {
     this.messages.push(message);
-    console.log(message)
-    Socket.sendMessage('alex', message.content)
+    Socket.sendMessage(this.user, message.content)
   }
   onAddMessage(message) {
     this.messages.push(message);
-    // Socket.sendMessage(this.user, message)
   }
   onPersonJoin(person) {
     this.users.push(person);

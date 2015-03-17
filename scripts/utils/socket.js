@@ -16,11 +16,10 @@ export default {
   },
   sendMessage(user, message) {
     const message = {
-      sender: user,
+      user: user,
       content: message,
       timestamp: Date.now()
     }
-    console.log(message)
     socket.emit('clientMessage', message);
     return message;
   }

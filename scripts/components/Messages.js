@@ -18,7 +18,6 @@ class MessageList extends React.Component {
   }
   componentDidMount() {
     ChatStore.listen(this.onStoreChange);
-    Actions.newMessage('alex', 'this is cool')
   }
   componentWillUnmount() {
     ChatStore.unlisten(this.onStoreChange);
@@ -27,9 +26,9 @@ class MessageList extends React.Component {
     var messageNodes = this.state.messages.map((message) => {
       return (
         <div className='message' key={message.timestamp}>
-          <span className='timestamp'>{message.timestamp}</span>
-          <span className='sender'>{message.sender}</span>
-          <div className='content'>{message.content}</div>
+          <div className='timestamp'>{message.timestamp}</div>
+          <span className='sender'>{message.user}: </span>
+          <span className='content'>{message.content}</span>
         </div>
       );
     });
@@ -46,9 +45,18 @@ class MessageInput extends React.Component {
   constructor(props) {
     super(props);
   }
+  handleSubmit(e) {
+    e.preventDefault()
+    Actions.newMessage('alex', React.findDOMNode(this.refs.input).value)
+    React.findDOMNode(this.refs.input).value = ''
+  }
   render() {
     return (
-      <h1>MessageInput</h1>
+      <div className="input">
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input ref='input' type='text'/>
+        </form>
+      </div>
     );
   }
 }

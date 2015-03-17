@@ -2,21 +2,17 @@ import alt from '../alt'
 
 class Actions {
   constructor() {
-    this.generateActions('clientJoin', 'personJoin', 'personLeave')
+    this.generateActions('setName', 'clientJoin', 'personJoin', 'personLeave')
   }
   newMessage(user, message) {
     this.dispatch({
-      sender: user,
+      user: user,
       content: message,
       timestamp: Date.now()
     });
   }
-  addMessage(user, message) {
-    // this.dispatch({
-    //   sender: user,
-    //   content: message,
-    //   timestamp: Date.now()
-    // })
+  addMessage(message) {
+    this.dispatch(message)
   }
 }
 

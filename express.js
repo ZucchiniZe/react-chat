@@ -28,6 +28,6 @@ io.on('connection', function (socket) {
   });
   socket.on('clientMessage', function(data) {
     console.log(data)
-    socket.emit('message', data)
+    socket.broadcast.emit('message', data)
   });
 });
