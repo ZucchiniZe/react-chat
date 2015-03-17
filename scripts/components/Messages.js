@@ -50,7 +50,7 @@ class MessageInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault()
-    Actions.newMessage('alex', React.findDOMNode(this.refs.input).value)
+    Actions.newMessage(ChatStore.getName(), React.findDOMNode(this.refs.input).value)
     React.findDOMNode(this.refs.input).value = ''
   }
   render() {

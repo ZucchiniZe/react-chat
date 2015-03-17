@@ -33,6 +33,9 @@ class PersonStore {
   static getPeople() {
     return this.getState().users;
   }
+  static getName() {
+    return this.getState().user;
+  }
 }
 
 export default alt.createStore(PersonStore)
