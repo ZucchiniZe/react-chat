@@ -26,7 +26,7 @@ io.on('connection', function (socket) {
     console.log(data)
     socket.broadcast.emit('send:message', data)
   });
-  socket.on('set:name', function(data) {
+  socket.on('set:join', function(data) {
     socket.broadcast.emit('client:join', data)
   });
 });

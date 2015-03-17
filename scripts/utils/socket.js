@@ -24,7 +24,7 @@ export default {
     socket.emit('client:message', message);
     return message;
   },
-  sendName(name) {
-    socket.emit('set:name', name);
+  sendJoin(name) {
+    socket.emit('set:join', name);
   }
 }
