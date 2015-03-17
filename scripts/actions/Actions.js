@@ -5,6 +5,9 @@ class Actions {
     this.generateActions('setName', 'clientJoin', 'personJoin', 'personLeave')
   }
   newMessage(user, message) {
+    if(message === '') {
+      return false;
+    }
     this.dispatch({
       user: user,
       content: message,
