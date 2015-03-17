@@ -26,7 +26,7 @@ class UserList extends React.Component {
   render() {
     var userNodes = this.state.users.map((user) => {
       return (
-        <span className='user'>{user}</span>
+        <div className='user'>{user}</div>
       );
     });
     return (
@@ -69,15 +69,15 @@ class MessageList extends React.Component {
     var name;
     var messageNodes = this.state.messages.map((message) => {
       return (
-        <div className='message' key={message.timestamp}>
+        <li className='message list-group-item' key={message.timestamp}>
           <div className='timestamp'>{moment(message.timestamp).format('LT')}</div>
           <span className='sender'>{message.user.capitalize()}: </span>
           <span className='content'>{message.content}</span>
-        </div>
+        </li>
       );
     });
     return (
-      <div className='messages'>
+      <div className='input-group messages'>
         <h3>
           MessageList
           <small>
@@ -86,7 +86,9 @@ class MessageList extends React.Component {
             </form>
           </small>
         </h3>
-        {messageNodes}
+        <ul className='list-group'>
+          {messageNodes}
+        </ul>
       </div>
     );
   }
