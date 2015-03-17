@@ -15,7 +15,7 @@ class PersonStore {
   }
   onNewMessage(message) {
     this.messages.push(message);
-    Socket.sendMessage(this.user, message.content)
+    Socket.sendMessage(this.user, message.content, message.timestamp)
   }
   onAddMessage(message) {
     this.messages.push(message);
@@ -34,7 +34,7 @@ class PersonStore {
     return this.getState().users;
   }
   static getName() {
-    return this.getState().user;
+    return this.getState().user
   }
 }
 

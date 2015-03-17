@@ -14,11 +14,12 @@ export default {
       Actions.personLeave(data);
     });
   },
-  sendMessage(user, message) {
+  sendMessage(user, message, ts) {
     const message = {
       user: user,
       content: message,
-      timestamp: Date.now()
+      special: false,
+      timestamp: ts
     }
     socket.emit('client:message', message);
     return message;
