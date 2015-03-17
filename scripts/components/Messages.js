@@ -23,11 +23,14 @@ class MessageList extends React.Component {
     ChatStore.unlisten(this.onStoreChange);
   }
   render() {
+    String.prototype.capitalize = function() {
+      return this.charAt(0).toUpperCase() + this.slice(1);
+    }
     var messageNodes = this.state.messages.map((message) => {
       return (
         <div className='message' key={message.timestamp}>
           <div className='timestamp'>{message.timestamp}</div>
-          <span className='sender'>{message.user}: </span>
+          <span className='sender'>{message.user.capitalize()}: </span>
           <span className='content'>{message.content}</span>
         </div>
       );
