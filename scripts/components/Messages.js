@@ -1,7 +1,7 @@
 import React from 'react';
 import Actions from '../actions/Actions';
 import ChatStore from '../stores/ChatStore';
-import moment from 'moment'
+import moment from 'moment';
 
 class UserList extends React.Component {
   constructor(props) {
@@ -23,16 +23,25 @@ class UserList extends React.Component {
   componentWillUnmount() {
     ChatStore.unlisten(this.onStoreChange);
   }
+  handleSubmit(e) {
+    e.preventDefault()
+    Actions.clientJoin(React.findDOMNode(this.refs.name).value)
+    React.findDOMNode(this.refs.name).value = ''
+    React.findDOMNode(this.refs.form).style.display = 'none'
+  }
   render() {
     var userNodes = this.state.users.map((user) => {
       return (
-        <div className='user'>{user}</div>
+        <div className='user' key={user}>{user}</div>
       );
     });
     return (
-      <div className='right users col-md-4'>
+      <div className='right users col-md-2'>
         <h3>Users:</h3>
         {userNodes}
+        <form ref='form' onSubmit={this.handleSubmit.bind(this)}>
+          <input className='form-control' ref='name' placeholder='Please enter your name' type='text'/>
+        </form>
       </div>
     )
   }
@@ -58,11 +67,6 @@ class MessageList extends React.Component {
   componentWillUnmount() {
     ChatStore.unlisten(this.onStoreChange);
   }
-  handleSubmit(e) {
-    e.preventDefault()
-    Actions.clientJoin(React.findDOMNode(this.refs.name).value)
-    React.findDOMNode(this.refs.name).value = ''
-  }
   render() {
     String.prototype.capitalize = function() {
       return this.charAt(0).toUpperCase() + this.slice(1);
@@ -78,18 +82,12 @@ class MessageList extends React.Component {
       );
     });
     return (
-      <div className='input-group messages col-md-8'>
-        <h3>
-          Message List
-          <small>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <input className='form-control' ref='name' placeholder='Please enter your name' type='text'/>
-            </form>
-          </small>
-        </h3>
+      <div className='input-group messages col-md-10'>
+        <h3>Message List</h3>
         <ul className='list-group'>
           {messageNodes}
         </ul>
+        <MessageInput/>
       </div>
     );
   }
@@ -108,9 +106,7 @@ class MessageInput extends React.Component {
     return (
       <div className="input col-md-8">
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className="input-group">
-            <input className='form-control' ref='input' type='text'/>
-          </div>
+          <input className='form-control' ref='input' type='text'/>
         </form>
       </div>
     );
@@ -126,7 +122,6 @@ class Messages extends React.Component {
       <div className='main row'>
         <UserList/>
         <MessageList/>
-        <MessageInput/>
       </div>
     );
   }
