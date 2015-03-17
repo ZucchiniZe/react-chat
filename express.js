@@ -28,5 +28,6 @@ io.on('connection', function (socket) {
   });
   socket.on('set:join', function(data) {
     socket.emit('client:join', data)
+    socket.broadcast.emit('client:join', data)
   });
 });
