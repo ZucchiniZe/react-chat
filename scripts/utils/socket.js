@@ -18,7 +18,6 @@ export default {
     const message = {
       user: user,
       content: message,
-      special: false,
       timestamp: ts
     }
     socket.emit('client:message', message);

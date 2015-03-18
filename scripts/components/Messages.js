@@ -105,8 +105,12 @@ class MessageInput extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault()
-    Actions.newMessage(ChatStore.getName(), React.findDOMNode(this.refs.input).value)
-    React.findDOMNode(this.refs.input).value = ''
+    if(ChatStore.getName() !== 'Default Name') {
+      Actions.newMessage(ChatStore.getName(), React.findDOMNode(this.refs.input).value)
+      React.findDOMNode(this.refs.input).value = ''
+    } else {
+      React.findDOMNode(this.refs.input).value = '<----- Please enter your name'
+    }
   }
   render() {
     return (
