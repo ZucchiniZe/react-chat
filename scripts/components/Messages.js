@@ -73,6 +73,9 @@ class MessageList extends React.Component {
   componentWillUnmount() {
     ChatStore.unlisten(this.onStoreChange);
   }
+  componentDidUpdate() {
+    React.findDOMNode(this.refs.messages).scrollTop = React.findDOMNode(this.refs.messages).scrollHeight;
+  }
   render() {
     String.prototype.capitalize = function() {
       return this.charAt(0).toUpperCase() + this.slice(1);
@@ -88,11 +91,13 @@ class MessageList extends React.Component {
       );
     });
     return (
-      <div className='input-group messages col-md-10'>
+      <div className='input-group message-group col-md-10'>
         <h3>Message List</h3>
-        <ul className='list-group'>
-          {messageNodes}
-        </ul>
+        <div ref='messages' className="messages">
+          <ul className='list-group'>
+            {messageNodes}
+          </ul>
+        </div>
         <MessageInput/>
       </div>
     );
