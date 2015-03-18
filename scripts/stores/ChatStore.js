@@ -17,7 +17,8 @@ class PersonStore {
   constructor() {
     this.bindActions(Actions);
     this.users = [];
-    this.messages = []
+    this.messages = [];
+    this.hiddenmessages = [];
     this.user = 'Default Name';
   }
   onClientJoin(name) {
@@ -33,8 +34,17 @@ class PersonStore {
     Socket.sendMessage(this.user, message.content, message.timestamp)
   }
   onAddMessage(message) {
+    if(document.hidden) {
+      this.hiddenmessages.push(message);
+      Favicon.badge(this.hiddenmessages.length);
+    }
+    document.addEventListener('visibilitychange', function() {
+      if(document.hidden) {
+        this.hiddenmessages = [];
+        Favicon.reset();
+      }
+    }, false);
     this.messages.push(message);
-    Favicon.badge(this.messages.length);
   }
   onPersonJoin(newPeople) {
     this.users = uniqueArray(this.users, newPeople);
