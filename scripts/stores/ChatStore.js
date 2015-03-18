@@ -1,6 +1,7 @@
 import alt from '../alt';
 import Actions from '../actions/Actions';
 import Socket from '../utils/socket';
+import Favicon from '../utils/favicon';
 
 function uniqueArray(arr1, arr2) {
   var arr = arr1.concat(arr2);
@@ -33,6 +34,7 @@ class PersonStore {
   }
   onAddMessage(message) {
     this.messages.push(message);
+    Favicon.badge(this.messages.length);
   }
   onPersonJoin(newPeople) {
     this.users = uniqueArray(this.users, newPeople);

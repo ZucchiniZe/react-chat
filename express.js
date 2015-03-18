@@ -1,4 +1,5 @@
-var app = require('express')();
+var express = require('express')
+var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
@@ -11,17 +12,19 @@ var people = [];
 server.listen(process.env.PORT)
 
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html')
+app.set('view engine', 'html');
 
 app.use(WebpackDevMiddleware(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
-}))
+}));
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.render('index')
 });
+
+app.use(express.static(__dirname + '/static'));
 
 io.on('connection', function (socket) {
   socket.on('client:message', function(data) {
@@ -37,5 +40,5 @@ io.on('connection', function (socket) {
     var index = people.indexOf(data);
     if(index > -1) people.splice(index, 1);
     socket.broadcast.emit('client:leave', people)
-  })
+  });
 });
