@@ -7,7 +7,7 @@ class PersonStore {
     this.bindActions(Actions);
     this.users = [];
     this.messages = []
-    this.user = localStorage.getItem('chatItem') || 'Default Name';
+    this.user = 'Default Name';
   }
   onClientJoin(name) {
     this.user = name;

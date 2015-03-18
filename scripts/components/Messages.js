@@ -19,6 +19,10 @@ class UserList extends React.Component {
   }
   componentDidMount() {
     ChatStore.listen(this.onStoreChange);
+    if(localStorage.getItem('chatName')) {
+      Actions.clientJoin(localStorage.getItem('chatName'))
+      React.findDOMNode(this.refs.form).style.display = 'none'
+    }
   }
   componentWillUnmount() {
     ChatStore.unlisten(this.onStoreChange);
@@ -39,12 +43,12 @@ class UserList extends React.Component {
       <div className='right users col-md-2'>
         <h3>Users:</h3>
         {userNodes}
-        <div className='input-group input-group-sm'>
         <form ref='form' onSubmit={this.handleSubmit.bind(this)}>
-          <input className='form-control' ref='name' aria-describedby='sizing-addon3' placeholder='Please enter your name' type='text'/>
+          <div className='input-group input-group-sm'>
+            <input className='form-control' ref='name' aria-describedby='sizing-addon3' placeholder='Please enter your name' type='text'/>
+          </div>
         </form>
       </div>
-    </div>
     )
   }
 }
