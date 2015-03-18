@@ -7,10 +7,10 @@ class PersonStore {
     this.bindActions(Actions);
     this.users = [];
     this.messages = []
-    this.user = 'Default Name';
+    this.user = localStorage.getItem('chatItem') || 'Default Name';
   }
   onClientJoin(name) {
-    this.user = localStorage.getItem('chatItem') || name;
+    this.user = name;
     localStorage.setItem('chatName', this.user);
     Socket.sendJoin(this.user)
   }

@@ -76,13 +76,11 @@ class MessageList extends React.Component {
     var name;
     var messageNodes = this.state.messages.map((message) => {
       return (
-        <div className='cont'>
         <li className='message list-group-item' key={message.timestamp}>
           <span className='sender'>{message.user.capitalize()}: </span>
           <span className='content'>{message.content}</span>
           <span className='timestamp'>{moment(message.timestamp).format('LT')}</span>
         </li>
-      </div>
       );
     });
     return (
