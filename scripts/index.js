@@ -1,3 +1,4 @@
+//Importing all the things
 import React from 'react';
 import App from './components/App';
 import Socket from './utils/socket';

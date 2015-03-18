@@ -20,6 +20,16 @@ class PersonStore {
     this.messages = [];
     this.hiddenmessages = [];
     this.user = 'Default Name';
+
+    function resetMessageCount() {
+      if(!document.hidden) {
+        this.hiddenmessages = [];
+        console.log(this.hiddenmessages);
+        Favicon.reset();
+      }
+    };
+
+    document.addEventListener('visibilitychange', resetMessageCount);
   }
   onClientJoin(name) {
     this.user = name;
@@ -38,12 +48,6 @@ class PersonStore {
       this.hiddenmessages.push(message);
       Favicon.badge(this.hiddenmessages.length);
     }
-    document.addEventListener('visibilitychange', function() {
-      if(document.hidden) {
-        this.hiddenmessages = [];
-        Favicon.reset();
-      }
-    }, false);
     this.messages.push(message);
   }
   onPersonJoin(newPeople) {
