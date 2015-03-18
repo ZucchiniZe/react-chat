@@ -6,6 +6,8 @@ var webpack = require('webpack');
 var WebpackDevMiddleware = require('webpack-dev-middleware');
 var config = require('./webpack.config');
 
+var people = [];
+
 server.listen(process.env.PORT)
 
 app.engine('html', require('ejs').renderFile);
@@ -27,7 +29,8 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('send:message', data)
   });
   socket.on('set:join', function(data) {
-    socket.emit('client:join', data)
-    socket.broadcast.emit('client:join', data)
+    people.push(data)
+    socket.emit('client:join', people)
+    socket.broadcast.emit('client:join', people)
   });
 });

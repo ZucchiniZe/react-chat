@@ -21,8 +21,17 @@ class PersonStore {
   onAddMessage(message) {
     this.messages.push(message);
   }
-  onPersonJoin(person) {
-    this.users.push(person);
+  onPersonJoin(newPeople) {
+    function uniqueArray(arr1, arr2) {
+      var a = arr1.concat(arr2);
+      for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+          if(a[i] === a[j]) a.splice(j--, 1);
+        }
+      }
+      return a;
+    };
+    this.users = uniqueArray(this.users, newPeople)
   }
   onPersonLeave(perosn) {
     var index = this.users.indexOf(person);
