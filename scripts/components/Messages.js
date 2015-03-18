@@ -39,10 +39,12 @@ class UserList extends React.Component {
       <div className='right users col-md-2'>
         <h3>Users:</h3>
         {userNodes}
+        <div className='input-group input-group-sm'>
         <form ref='form' onSubmit={this.handleSubmit.bind(this)}>
-          <input className='form-control' ref='name' placeholder='Please enter your name' type='text'/>
+          <input className='form-control' ref='name' aria-describedby='sizing-addon3' placeholder='Please enter your name' type='text'/>
         </form>
       </div>
+    </div>
     )
   }
 }
@@ -74,11 +76,13 @@ class MessageList extends React.Component {
     var name;
     var messageNodes = this.state.messages.map((message) => {
       return (
+        <div className='cont'>
         <li className='message list-group-item' key={message.timestamp}>
-          <div className='timestamp'>{moment(message.timestamp).format('LT')}</div>
           <span className='sender'>{message.user.capitalize()}: </span>
           <span className='content'>{message.content}</span>
+          <span className='timestamp'>{moment(message.timestamp).format('LT')}</span>
         </li>
+      </div>
       );
     });
     return (
@@ -104,7 +108,7 @@ class MessageInput extends React.Component {
   }
   render() {
     return (
-      <div className="input col-md-8">
+      <div className="mesg-input input col-md-8">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input className='form-control' ref='input' type='text'/>
         </form>
