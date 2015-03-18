@@ -2,6 +2,16 @@ import alt from '../alt';
 import Actions from '../actions/Actions';
 import Socket from '../utils/socket';
 
+function uniqueArray(arr1, arr2) {
+  var arr = arr1.concat(arr2);
+  for(var i=0; i < arr.length; ++i) {
+    for(var j=i+1; j < arr.length; ++j) {
+      if(arr[i] === arr[j]) arr.splice(j--, 1);
+    }
+  }
+  return arr;
+};
+
 class PersonStore {
   constructor() {
     this.bindActions(Actions);
@@ -14,6 +24,9 @@ class PersonStore {
     localStorage.setItem('chatName', this.user);
     Socket.sendJoin(this.user)
   }
+  onClientLeave() {
+    Socket.sendLeave(this.user)
+  }
   onNewMessage(message) {
     this.messages.push(message);
     Socket.sendMessage(this.user, message.content, message.timestamp)
@@ -22,20 +35,10 @@ class PersonStore {
     this.messages.push(message);
   }
   onPersonJoin(newPeople) {
-    function uniqueArray(arr1, arr2) {
-      var a = arr1.concat(arr2);
-      for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-          if(a[i] === a[j]) a.splice(j--, 1);
-        }
-      }
-      return a;
-    };
-    this.users = uniqueArray(this.users, newPeople)
+    this.users = uniqueArray(this.users, newPeople);
   }
-  onPersonLeave(perosn) {
-    var index = this.users.indexOf(person);
-    this.users.splice(index, 1)
+  onPersonLeave(newPeople) {
+    this.users = newPeople;
   }
   static getMessages() {
     return this.getState().messages;
@@ -44,7 +47,7 @@ class PersonStore {
     return this.getState().users;
   }
   static getName() {
-    return this.getState().user
+    return this.getState().user;
   }
 }
 

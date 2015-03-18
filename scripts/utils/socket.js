@@ -25,5 +25,8 @@ export default {
   },
   sendJoin(name) {
     socket.emit('set:join', name);
+  },
+  sendLeave(name) {
+    socket.emit('set:leave', name);
   }
 }

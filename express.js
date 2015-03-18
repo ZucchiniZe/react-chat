@@ -33,4 +33,9 @@ io.on('connection', function (socket) {
     socket.emit('client:join', people)
     socket.broadcast.emit('client:join', people)
   });
+  socket.on('set:leave', function(data) {
+    var index = people.indexOf(data);
+    if(index > -1) people.splice(index, 1);
+    socket.broadcast.emit('client:leave', people)
+  })
 });
