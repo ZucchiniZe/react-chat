@@ -5,7 +5,7 @@ class Header extends React.Component {
       <nav className='navbar-fixed-fixed-top navbar navbar-default'>
         <div className='container-fluid'>
           <div className='navbar-header'>
-            <a className='navbar-brand' href=''>Welcome to Martini!</a>
+            <a className='navbar-brand'>Welcome to Martini!</a>
           </div>
         </div>
       </nav>
