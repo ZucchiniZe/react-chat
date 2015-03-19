@@ -4,7 +4,7 @@
   "description": "A chat program made with react",
   "scripts": {
     "start": "PORT=3000 NODE_ENV=production ./node_modules/nodemon/bin/nodemon.js -w express.js express.js",
-    "postinstall": "./node_modules/webpack/bin/webpack.js -p"
+    "build": "./node_modules/webpack/bin/webpack.js -p --progress"
   },
   "repository": {
     "type": "git",
