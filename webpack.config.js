@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var package = require('./package.json');
 
 module.exports = {
   devtool: 'source-map',
@@ -9,8 +10,8 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.BannerPlugin('Copyright 2015 David Leavenworth and Alex Bierwagen'),
+    new webpack.optimize.UglifyJsPlugin({output: {comments: false}, compress: {warnings: false}}),
+    new webpack.BannerPlugin('v' + package.version + '\nMIT License\nCopyright 2015\nMade by David Leavenworth and Alex Bierwagen'),
     new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin()
   ],
