@@ -1,9 +1,8 @@
-//TOO MANY THING TO COMMENT IN THIS FILE!
-//Importing all components
+// Importing all libraries, stores and actions
 import React from 'react';
+import moment from 'moment';
 import Actions from '../actions/Actions';
 import ChatStore from '../stores/ChatStore';
-import moment from 'moment';
 
 class UserList extends React.Component {
   constructor(props) {

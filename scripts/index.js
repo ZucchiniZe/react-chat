@@ -1,15 +1,19 @@
-//Importing all the things
+// Importing all the things
 import React from 'react';
 import App from './components/App';
 import Socket from './utils/socket';
 import Action from './actions/Actions';
-//Adding styles
-require('./styles/index.less')
-//Initalizing websockets
+
+// Adding styles
+require('./styles/index.less');
+
+// Initalizing websockets
 Socket.initSockets();
-//Shows when client leaves of force unload
+
+// Shows when client leaves of force unload
 window.onbeforeunload = function() {
   Action.clientLeave();
-}
-//Renders the app which is all of the compoents packages together
+};
+
+// Renders the app which is all of the compoents packages together
 React.render(<App />, document.body);

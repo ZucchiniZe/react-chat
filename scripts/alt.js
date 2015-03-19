@@ -1,4 +1,4 @@
-//Importing alt
+// Importing alt
 import Alt from 'alt';
 
 // Initiate new alt object
