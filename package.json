@@ -10,22 +10,13 @@
     "type": "git",
     "url": "https://github.com/ZucchiniZe/react-chat.git"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
-  ],
   "author": "Alex B <me@alexb.io> (https://alexb.io)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ZucchiniZe/react-chat/issues"
+  },
+  "engines": {
+    "iojs": "1.2.0"
   },
   "homepage": "https://github.com/ZucchiniZe/react-chat",
   "devDependencies": {
