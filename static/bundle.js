@@ -1,5 +1,5 @@
 /*!
- * v1.1.0
+ * v1.3.7
  * MIT License
  * Copyright 2015
  * Made by David Leavenworth and Alex Bierwagen
