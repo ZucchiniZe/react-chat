@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>Martini</title>
+  <link rel="stylesheet" href="//cdn.smtcs.rocks/bs/bs.css">
+  <link rel='icon' type='image/jpg' href='/favicon.jpg'>
+</head>
+  <body>
+    <h1 style="text-align:center;vertical-align:middle">React is broke.</h1>
+  </body>
+  <% if(env === 'production') { %>
+    <script src="/bundle.js"></script>
+  <% } else { %>
+    <script src="/scripts/bundle.js"></script>
+  <% } %>
+</html>
