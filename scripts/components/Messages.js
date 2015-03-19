@@ -1,3 +1,5 @@
+//TOO MANY THING TO COMMENT IN THIS FILE!
+//Importing all components
 import React from 'react';
 import Actions from '../actions/Actions';
 import ChatStore from '../stores/ChatStore';
