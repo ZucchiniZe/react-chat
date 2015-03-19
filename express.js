@@ -4,7 +4,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 var webpack = require('webpack');
-var WebpackDevMiddleware = require('webpack-dev-middleware');
 var config = require('./webpack.config');
 
 var people = [];
@@ -15,6 +14,7 @@ console.log('Listening on port', process.env.PORT)
 app.set('view engine', 'ejs');
 
 if(process.env.NODE_ENV === 'development') {
+  var WebpackDevMiddleware = require('webpack-dev-middleware');
   config.path = __dirname + '/scripts/';
   config.publicPath = '/scripts/';
   config.plugins = [
