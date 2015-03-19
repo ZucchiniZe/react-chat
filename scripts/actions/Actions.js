@@ -21,5 +21,6 @@ class Actions {
     });
   }
 }
+
 // Exporting the actions
 export default alt.createActions(Actions);

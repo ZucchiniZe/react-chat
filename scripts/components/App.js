@@ -5,7 +5,7 @@ import Header from './Header';
 
 export default class App extends React.Component {
   render() {
-    // Rendering all components
+    // Rendering all components in a wrapper
     return (
       <div className='app container-fluid'>
         <Header/>

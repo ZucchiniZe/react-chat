@@ -3,7 +3,7 @@
   "version": "1.3.7",
   "description": "A chat program made with react",
   "scripts": {
-    "start": "PORT=3000 NODE_ENV=production ./node_modules/nodemon/bin/nodemon.js -w express.js express.js",
+    "start": "PORT=3000 NODE_ENV=development ./node_modules/nodemon/bin/nodemon.js -w express.js express.js",
     "build": "./node_modules/webpack/bin/webpack.js -p --progress"
   },
   "repository": {

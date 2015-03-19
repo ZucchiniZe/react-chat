@@ -1,8 +1,11 @@
+// Import socket client and actions
 import io from 'socket.io-client';
 import Actions from '../actions/Actions'
+// Connect to server
 var socket = io(location.origin);
 
 export default {
+  // Add listeners with corresponding actions
   initSockets() {
     socket.on('send:message', (data) => {
       Actions.addMessage(data);
@@ -14,6 +17,7 @@ export default {
       Actions.personLeave(data);
     });
   },
+  // Create a message and send it to the server
   sendMessage(user, message, ts) {
     const message = {
       user: user,
@@ -23,10 +27,12 @@ export default {
     socket.emit('client:message', message);
     return message;
   },
+  // Send the join message
   sendJoin(name) {
-    socket.emit('set:join', name);
+    socket.emit('local:join', name);
   },
+  // Send the leave message
   sendLeave(name) {
-    socket.emit('set:leave', name);
+    socket.emit('local:leave', name);
   }
 }
