@@ -12,6 +12,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({output: {comments: false}, compress: {warnings: false}}),
     new webpack.BannerPlugin('v' + package.version + '\nMIT License\nCopyright 2015\nMade by David Leavenworth and Alex Bierwagen'),
+    new webpack.PrefetchPlugin('react'),
     new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin()
   ],
