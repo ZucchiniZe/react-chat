@@ -30,13 +30,13 @@ class PersonStore {
     this.user = 'Default Name';
 
     // Add eventlistener to reset the favicon
-    document.addEventListener('visibilitychange', this.resetMessageCount);
+    document.addEventListener('visibilitychange', this.resetMessageCount.bind(this));
   }
   // Reset the hiddenMessage count and favicon
   resetMessageCount() {
     if(!document.hidden) {
       this.hiddenMessages = 0;
-      Favicon.setBubble(this.hiddenMessages);
+      Favicon.reset();
     }
   }
   // When the client joins set their username
