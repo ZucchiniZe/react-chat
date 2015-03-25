@@ -5,7 +5,9 @@ import Socket from './utils/socket';
 import Action from './actions/Actions';
 
 // Adding styles
-require('./styles/index.less');
+if(!global) {
+  require('./styles/index.less');
+}
 
 // Initalizing websockets
 Socket.initSockets();

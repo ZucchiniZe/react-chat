@@ -2,7 +2,9 @@
 import io from 'socket.io-client';
 import Actions from '../actions/Actions'
 // Connect to server
-var socket = io(location.origin);
+if(!global) {
+  var socket = io(window.location.origin);
+}
 
 export default {
   // Add listeners with corresponding actions

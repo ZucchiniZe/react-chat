@@ -1,9 +1,12 @@
+require('babel/register');
 // Basic imports and libraries
 var express = require('express')
 // Initiate new express instance
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var React = require('react');
+var App = require('./scripts/index.js');
 
 var people = [];
 
@@ -26,9 +29,10 @@ if(process.env.NODE_ENV === 'development') {
   }));
 }
 
+console.log(React.renderToString(React.createElement(App, null)));
 // Get the index page with the `env` local
 app.get('/', function(req, res) {
-  res.render('index', {env: process.env.NODE_ENV})
+  res.render('index', {env: process.env.NODE_ENV, component: React.renderToString(React.createElement(App, null))})
 });
 
 // Serve the static directory

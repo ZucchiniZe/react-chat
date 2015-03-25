@@ -30,7 +30,9 @@ class PersonStore {
     this.user = 'Default Name';
 
     // Add eventlistener to reset the favicon
-    document.addEventListener('visibilitychange', this.resetMessageCount.bind(this));
+    if(!global) {
+      document.addEventListener('visibilitychange', this.resetMessageCount.bind(this));
+    }
   }
   // Reset the hiddenMessage count and favicon
   resetMessageCount() {
